@@ -5,7 +5,7 @@ let search_term = '';
 let countries;
 
 const fetchCountries = async () => {
-	countries = await fetch('./niyo.json').then(
+	countries = await fetch('https://raw.githubusercontent.com/vashisth00/search-index/master/dist/niyo.json').then(
 		res => res.json()
 	);
 
@@ -30,32 +30,33 @@ const showCountries = async () => {
 		country => country.name.toLowerCase().includes(search_term.toLowerCase())
 	).forEach(country => {
 		const li = document.createElement('li');
-		const country_flag = document.createElement('img');
+		// const country_flag = document.createElement('img');
 		const country_name = document.createElement('h3');
-		const country_info = document.createElement('div');
+		// const country_info = document.createElement('div');
 		const country_population = document.createElement('h2');
 		const country_popupation_text = document.createElement('h5');
 		
-		li.classList.add('country-item');
-		country_info.classList.add('country-info');
+		// li.classList.add('country-item');
+		// country_info.classList.add('country-info');
 		
-		country_flag.src = country.flag;
-		country_flag.classList.add('country-flag');
+		// country_flag.src = country.flag;
+		// country_flag.classList.add('country-flag');
 		
-		country_name.innerText = country.name;
+		country_name.innerText = country.first;
 		country_name.classList.add('country-name');
 		
-		country_population.innerText = numberWithCommas(country.population);
+		country_population.innerText = country.address;
 		country_population.classList.add('country-population');
-		country_popupation_text.innerText = 'Population';
-		country_popupation_text.classList.add('country-population-text');
+
+		country_popupation_text.innerText = 'Address';
+		// country_popupation_text.classList.add('country-population-text');
 		
-		country_info.appendChild(country_population);
-		country_info.appendChild(country_popupation_text);
+		// country_info.appendChild(country_population);
+		// country_info.appendChild(country_popupation_text);
 		
-		li.appendChild(country_flag);
+		//li.appendChild(country_flag);
 		li.appendChild(country_name);
-		li.appendChild(country_info);
+		// li.appendChild(country_info);
 		ul.appendChild(li);
 	})
 	results.appendChild(ul);
