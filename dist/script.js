@@ -5,7 +5,7 @@ let search_term = '';
 let countries;
 
 const fetchCountries = async () => {
-	countries = await fetch('https://raw.githubusercontent.com/vashisth00/search-index/master/dist/niyo.json').then(
+	countries = await fetch('https://raw.githubusercontent.com/vashisth00/search-index/master/dist/normal.json').then(
 		res => res.json()
 	);
 }
@@ -53,7 +53,7 @@ const showCountries = async () => {
 		
 		// country_population.innerText = numberWithCommas(country.population);
 		// country_population.classList.add('country-population');
-		// country_popupation_text.innerText = 'Population';
+		 country_popupation_text.innerText = 'Population';
 		 country_popupation_text.classList.add('country-population-text');
 		// country_info.appendChild(country_population);
 		 //country_info.appendChild(country_popupation_text);
