@@ -22,16 +22,21 @@ const showCountries = async () => {
 	ul.classList.add('countries');
 	
 	countries.filter(
-		country => country.name.toLowerCase().includes(search_term.toLowerCase())
+		country => country.name.toLowerCase().includes(search_term.toLowerCase())+
+		country.address.toLowerCase().includes(search_term.toLowerCase())+
+		country.guid.toLowerCase().includes(search_term.toLowerCase())
 	).forEach(country => {
 		const li = document.createElement('li');
-		// const country_flag = document.createElement('img');
+	//	const country_flag = document.createElement('img');
 		const country_name = document.createElement('h3');
+		const country_address = document.createElement('h3');
+		const user_guid = document.createElement('p');
+		//const styling = document.createElement('p');
 		// const country_info = document.createElement('div');
 		// const country_population = document.createElement('h2');
-		// const country_popupation_text = document.createElement('h5');
+		 const country_popupation_text = document.createElement('h5');
 		
-		// li.classList.add('country-item');
+		 li.classList.add('country-item');
 		// country_info.classList.add('country-info');
 		
 		// country_flag.src = country.flag;
@@ -40,17 +45,24 @@ const showCountries = async () => {
 		country_name.innerText = country.name;
 		country_name.classList.add('country-name');
 		
-		// country_population.innerText = country.address;
+		country_address.innerText = country.address;
+		country_address.classList.add('country-address');
+		 country_popupation_text.innerText = 'Population';
+		user_guid.innerText = country.guid;
+		user_guid.classList.add('country-guid');
+		
+		// country_population.innerText = numberWithCommas(country.population);
 		// country_population.classList.add('country-population');
-
-		// country_popupation_text.innerText = 'Address';
-		// country_popupation_text.classList.add('country-population-text');
-		
+		// country_popupation_text.innerText = 'Population';
+		 country_popupation_text.classList.add('country-population-text');
 		// country_info.appendChild(country_population);
-		// country_info.appendChild(country_popupation_text);
+		 //country_info.appendChild(country_popupation_text);
 		
-		//li.appendChild(country_flag);
+		// li.appendChild(country_flag);
 		li.appendChild(country_name);
+		li.appendChild(country_address);
+		li.appendChild(user_guid);
+		//li.appendChild("<p>Guid</p>");
 		// li.appendChild(country_info);
 		ul.appendChild(li);
 	})

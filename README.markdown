@@ -1,5 +1,4 @@
-# Weekly Coding Challenge #15 - Instant Search
+# Pure JS Search
 
-A Pen created on CodePen.io. Original URL: [https://codepen.io/FlorinPop17/pen/qzNxGa](https://codepen.io/FlorinPop17/pen/qzNxGa).
-
+Main goal is to attain ecommerce or any API search using plain Vanilla JS remove all jQuery misery 
 
