@@ -8,11 +8,6 @@ const fetchCountries = async () => {
 	countries = await fetch('https://raw.githubusercontent.com/vashisth00/search-index/master/dist/niyo.json').then(
 		res => res.json()
 	);
-
-    // countries.append('Content-Type', 'application/json');
-    // countries.append('Accept', 'application/json');
-    // countries.append('Authorization', 'Basic ' + base64.encode(username + ":" +  password));
-    // countries.append('Origin','https://vashisthbhushan.com/niyo/niyo.json');
 }
 
 const showCountries = async () => {
@@ -33,8 +28,8 @@ const showCountries = async () => {
 		// const country_flag = document.createElement('img');
 		const country_name = document.createElement('h3');
 		// const country_info = document.createElement('div');
-		const country_population = document.createElement('h2');
-		const country_popupation_text = document.createElement('h5');
+		// const country_population = document.createElement('h2');
+		// const country_popupation_text = document.createElement('h5');
 		
 		// li.classList.add('country-item');
 		// country_info.classList.add('country-info');
@@ -42,13 +37,13 @@ const showCountries = async () => {
 		// country_flag.src = country.flag;
 		// country_flag.classList.add('country-flag');
 		
-		country_name.innerText = country.first;
+		country_name.innerText = country.name;
 		country_name.classList.add('country-name');
 		
-		country_population.innerText = country.address;
-		country_population.classList.add('country-population');
+		// country_population.innerText = country.address;
+		// country_population.classList.add('country-population');
 
-		country_popupation_text.innerText = 'Address';
+		// country_popupation_text.innerText = 'Address';
 		// country_popupation_text.classList.add('country-population-text');
 		
 		// country_info.appendChild(country_population);
