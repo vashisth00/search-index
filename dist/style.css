@@ -99,6 +99,7 @@ body {
 }
 
 .search-item:hover {
+	cursor: pointer;
 	background: #FFFEDB;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
@@ -127,6 +128,9 @@ body {
 	        flex: 2;
 	font-weight: normal;
 	letter-spacing: .5px;
+}
+.item-pincode{
+	display: none;
 } 
 input {
     font-family: 'Roboto', sans-serif;

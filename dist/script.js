@@ -5,7 +5,7 @@ let search_term = '';
 let allData;
 
 const fetchData = async () => {
-	allData = await fetch('https://raw.githubusercontent.com/vashisth00/search-index/master/dist/normal.json').then(
+	allData = await fetch('http://www.mocky.io/v2/5ba8efb23100007200c2750c').then(
 		res => res.json()
 	);
 }
@@ -20,28 +20,36 @@ const showData = async () => {
 	// creating the structure
 	const ul = document.createElement("ul");
 	ul.classList.add('allData');
-	
 	allData.filter(
-		country => country.name.toLowerCase().includes(search_term.toLowerCase())+
-		country.address.toLowerCase().includes(search_term.toLowerCase())+
-		country.guid.toLowerCase().includes(search_term.toLowerCase())
-	).forEach(country => {
+		customdata => customdata.name.toLowerCase().includes(search_term.toLowerCase())+
+		customdata.address.toLowerCase().includes(search_term.toLowerCase())+
+		customdata.id.toLowerCase().includes(search_term.toLowerCase())+
+		customdata.pincode.includes(search_term)+
+		customdata.items.includes(search_term)
+	).forEach(customdata => {
 		const li = document.createElement('li');
+		const pincode = document.createElement('p');
+		const items = document.createElement('p');
 		const data_name = document.createElement('p');
 		const data_address = document.createElement('p');
 		const user_guid = document.createElement('p');
-		const breaking = document.createElement('br');
-		var spans = document.createElement("SPAN"); 
 		li.classList.add('search-item');
-		data_name.innerText = country.name;
+		data_name.innerText = customdata.name;
 		data_name.classList.add('item-name');
-		data_address.innerText = country.address;
+		data_address.innerText = customdata.address;
 		data_address.classList.add('item-addr');
-		user_guid.innerText = country.guid;
+		user_guid.innerText = customdata.id;
 		user_guid.classList.add('item-guid');
+		pincode.innerText = customdata.pincode;
+		pincode.classList.add('item-pincode');
+		items.innerText = customdata.items;
+		items.classList.add('item-pincode');
+		console.log(items);
 		li.appendChild(user_guid);
 		li.appendChild(data_name);
 		li.appendChild(data_address);
+		li.appendChild(pincode);
+		li.appendChild(items);
 		ul.appendChild(li);
 	})
 	 results.appendChild(ul);
@@ -53,14 +61,8 @@ showData();
 search_input.addEventListener('input', (e) => {
 	search_term = e.target.value;
 	if (results == null){
-		console.log("none")
+		console.log("No Results")
 	}
 	else
-	// re-display allData again based on the new search_term
-	showData();
+	{showData();}
 });
-
-// From StackOverflow https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
-function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
