@@ -2,80 +2,62 @@ const search_input = document.getElementById('search');
 const results = document.getElementById('results');
 
 let search_term = '';
-let countries;
+let allData;
 
-const fetchCountries = async () => {
-	countries = await fetch('https://raw.githubusercontent.com/vashisth00/search-index/master/dist/normal.json').then(
+const fetchData = async () => {
+	allData = await fetch('https://raw.githubusercontent.com/vashisth00/search-index/master/dist/normal.json').then(
 		res => res.json()
 	);
 }
 
-const showCountries = async () => {
+const showData = async () => {
 	// clearHTML
 	results.innerHTML = '';
 	
 	// getting the data
-	await fetchCountries();
+	await fetchData();
 	
 	// creating the structure
 	const ul = document.createElement("ul");
-	ul.classList.add('countries');
+	ul.classList.add('allData');
 	
-	countries.filter(
+	allData.filter(
 		country => country.name.toLowerCase().includes(search_term.toLowerCase())+
 		country.address.toLowerCase().includes(search_term.toLowerCase())+
 		country.guid.toLowerCase().includes(search_term.toLowerCase())
 	).forEach(country => {
 		const li = document.createElement('li');
-	//	const country_flag = document.createElement('img');
-		const country_name = document.createElement('h3');
-		const country_address = document.createElement('h3');
+		const data_name = document.createElement('p');
+		const data_address = document.createElement('p');
 		const user_guid = document.createElement('p');
-		//const styling = document.createElement('p');
-		// const country_info = document.createElement('div');
-		// const country_population = document.createElement('h2');
-		 const country_popupation_text = document.createElement('h5');
-		
-		 li.classList.add('search-item');
-		// country_info.classList.add('country-info');
-		
-		// country_flag.src = country.flag;
-		// country_flag.classList.add('country-flag');
-		
-		country_name.innerText = country.name;
-		country_name.classList.add('country-name');
-		
-		country_address.innerText = country.address;
-		country_address.classList.add('country-address');
-		 country_popupation_text.innerText = 'Population';
+		const breaking = document.createElement('br');
+		var spans = document.createElement("SPAN"); 
+		li.classList.add('search-item');
+		data_name.innerText = country.name;
+		data_name.classList.add('item-name');
+		data_address.innerText = country.address;
+		data_address.classList.add('item-addr');
 		user_guid.innerText = country.guid;
-		user_guid.classList.add('country-guid');
-		
-		// country_population.innerText = numberWithCommas(country.population);
-		// country_population.classList.add('country-population');
-		 country_popupation_text.innerText = 'Population';
-		 country_popupation_text.classList.add('country-population-text');
-		// country_info.appendChild(country_population);
-		 //country_info.appendChild(country_popupation_text);
-		
-		// li.appendChild(country_flag);
-		li.appendChild(country_name);
-		li.appendChild(country_address);
+		user_guid.classList.add('item-guid');
 		li.appendChild(user_guid);
-		//li.appendChild("<p>Guid</p>");
-		// li.appendChild(country_info);
+		li.appendChild(data_name);
+		li.appendChild(data_address);
 		ul.appendChild(li);
 	})
-	results.appendChild(ul);
+	 results.appendChild(ul);
 }
 
-// display initial countries
-showCountries();
+// display initial allData
+showData();
 
 search_input.addEventListener('input', (e) => {
 	search_term = e.target.value;
-	// re-display countries again based on the new search_term
-	showCountries();
+	if (results == null){
+		console.log("none")
+	}
+	else
+	// re-display allData again based on the new search_term
+	showData();
 });
 
 // From StackOverflow https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript

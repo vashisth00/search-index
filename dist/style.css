@@ -3,16 +3,35 @@
 * {
 	box-sizing: border-box;
 }
+/* width */
+::-webkit-scrollbar {
+	width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: grey; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+	background: white; 
+  }
 
 /* Scrollbar for search box */
 
 .scrollbar::-webkit-scrollbar {
-    background-color:#fff;
+    background-color:rgba(255, 255, 255, 0);
     width:16px
 }
 
 .scrollbar::-webkit-scrollbar-track {
-    background-color:#fff
+    background-color:rgba(255, 255, 255, 0);
 }
 .scrollbar::-webkit-scrollbar-track:hover {
     background-color:#f4f4f4
@@ -37,8 +56,12 @@ body{
     height: 65vh;
     min-width: 150px;
     background: #e4e4e4;
-    overflow-y: scroll}
-.overflow{min-height: 100vh}
+	overflow-y: scroll
+}
+.overflow{
+	padding-right: 6.5px;
+	min-height: 100vh;
+}
 
 body {
 	
@@ -58,24 +81,25 @@ body {
 	margin: 0 0 50px;
 }
 
-.countries {
+.allData {
 	padding: 0;
 	list-style-type: none;
 	width: 480px;
 }
 
 .search-item {
+	padding: 10px;
+    margin: 5px;
 	background-color: #fff;
 	border-radius: 3px;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 	display: -webkit-box;
-	display: flex;
+	display: block;
 	-webkit-box-pack: justify;
 	        justify-content: space-between;
 	-webkit-box-align: center;
 	        align-items: center;
-	padding: 15px 10px;
-	margin: 10px 0;
+	text-align: left;
 }
 
 .search-item:hover {
@@ -86,17 +110,33 @@ body {
 .country-flag {
 	width: 40px;
 }
-
-.country-name {
-	-webkit-box-flex: 2;
+.item-guid {
+	font-size: 10px !important;
+    height: 5px !important;
+    -webkit-box-flex: 2;
 	        flex: 2;
 	font-weight: normal;
 	letter-spacing: .5px;
-	margin: 0 5px;
-	text-align: center;
-}
-
-.country-info {
+} 
+ 
+.item-name {
+	font-style: italic;
+    height: 5px !important;
+    -webkit-box-flex: 2;
+	        flex: 2;
+	font-weight: normal;
+	letter-spacing: .5px;
+} 
+.item-addr{
+	font-size: 8px;
+	color: #888888;
+    -webkit-box-flex: 2;
+	        flex: 2;
+	font-weight: normal;
+	letter-spacing: .5px;
+} 
+/* 
+.item-info {
 	border-left: 1px solid #aaa;
 	color: #777;
 	padding: 0 15px;
@@ -116,14 +156,15 @@ body {
 	letter-spacing: 1px;
 	margin: 0;
 	text-transform: uppercase;
-}
+} */
 
 input {
-	font-family: 'Roboto', sans-serif;
-	border-radius: 3px;
-	border: 1px solid #ddd;
-	padding: 15px;
-	width: 480px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    width: 490px;
 }
 
 footer {
