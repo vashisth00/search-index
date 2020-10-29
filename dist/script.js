@@ -36,7 +36,7 @@ const showCountries = async () => {
 		// const country_population = document.createElement('h2');
 		 const country_popupation_text = document.createElement('h5');
 		
-		 li.classList.add('country-item');
+		 li.classList.add('search-item');
 		// country_info.classList.add('country-info');
 		
 		// country_flag.src = country.flag;
